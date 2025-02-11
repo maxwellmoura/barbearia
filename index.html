@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/script.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" type="image/x-icon" href="./img/logo.webp">
+    <title>BarberShop</title>
+</head>
+
+<body>
+    <header class="header">
+        <img class='logo' src="./img/logo.webp" alt="Logo da Barbearia" />
+        <h1>Bem-vindo à Barbearia</h1>
+        <button id="menu" class="material-icons" onclick="clickMenu()">menu</button>
+        <menu id="menuItens">
+            <ul class="link-lista">
+                <a href="./index.html">Home</a>
+                <a href="./Pages/produtos.html">Produtos</a>
+                <a href="./Pages/barbeiros.html">Barbeiros</a>
+                <a href="./Pages/agenda.html">Agendar</a>
+                <a href="#">Reserva</a>
+            </ul>
+        </menu>
+    </header>
+    <main>
+        <section id="sobre">
+            <h2>Sobre</h2>
+            <img class="imagem" src="./img/Imagem1.jpeg" alt="Nossa Barbearia">
+            <h2>O Sonho de Seu João</h2>
+            <p>Tudo começou há mais de 20 anos, quando Seu João, um homem simples e trabalhador, decidiu abrir sua
+                própria barbearia em um pequeno bairro da cidade. Seu João sempre foi apaixonado por cortar cabelo e
+                fazer barbas, e ele sonhava em criar um local onde os homens pudessem se sentir confortáveis e bem
+                cuidados.</p>
+            <p>Com muito esforço e dedicação, Seu João conseguiu transformar um pequeno espaço em uma barbearia
+                acolhedora e bem equipada. Ele investiu em ferramentas de alta qualidade e se esforçou para criar um
+                ambiente aconchegante, com cadeiras confortáveis e decorações clássicas.</p>
+            <h2>O Legado</h2>
+            <p>Ao longo dos anos, a Barbearia de Seu João se tornou um ponto de referência no bairro. Os homens da
+                região começaram a frequentar a barbearia não apenas para cortar o cabelo, mas também para socializar e
+                se sentir parte de uma comunidade. Seu João se tornou uma figura respeitada e querida no bairro,
+                conhecido por sua habilidade com tesouras e sua capacidade de ouvir e aconselhar.</p>
+            <p>Quando Seu João se aposentou, ele passou a barbearia para seu filho, Joãozinho. Joãozinho havia crescido
+                ajudando o pai na barbearia e havia aprendido todos os truques do ofício. Ele se esforçou para manter a
+                tradição da barbearia, mas também para modernizá-la e atrair uma nova geração de clientes.</p>
+            <h2>A Nova Geração</h2>
+            <p>Hoje em dia, a Barbearia de Seu João é um local vibrante e animado, onde os homens podem se sentir
+                confortáveis e bem cuidados. Joãozinho e sua equipe de barbeiros são conhecidos por sua habilidade e
+                criatividade, e a barbearia oferece uma variedade de serviços, desde cortes de cabelo clássicos até
+                barbas e corte de bigodes.</p>
+            <p>A barbearia também é um local de encontro para a comunidade, onde os homens podem se reunir para
+                conversar, assistir a esportes e se divertir. A Barbearia de Seu João é um verdadeiro ponto de
+                referência no bairro, e sua história e tradição continuam a inspirar e a atrair novos clientes.</p>
+        </section>
+
+
+        <section id="servicos">
+            <h2>Serviços</h2>
+            <ul class="servicos-lista">
+                <li class="servico">
+                    <h3>Corte de Cabelo</h3>
+                    <div class="servico-imagem-container">
+                        <img class="servico-imagem" src="./img/Serviço1.jpeg" alt="serviço de corte">
+                    </div>
+                    <p>É o serviço mais básico e essencial de uma barbearia. 
+                        O barbeiro deve ser habilidoso em cortar cabelos de diferentes comprimentos e estilos.</p>
+                </li>
+                <li class="servico">
+                    <h3>Barba e Bigode</h3>
+                    <div class="servico-imagem-container">
+                        <img class="servico-imagem" src="./img/Serviço 2.jpeg" alt="Serviço Barba e Bigode">
+                    </div>
+                    <p>A manutenção da barba e do bigode é um serviço fundamental em uma barbearia. 
+                        Isso inclui cortar, aparar e modelar a barba e o bigode.</p>
+                </li>
+                <li class="servico">
+                    <h3>Navalha</h3>
+                    <div class="servico-imagem-container">
+                        <img class="servico-imagem" src="./img/Serviço 3.jpeg" alt="Serviço Navalha">
+                    </div>
+                    <p>O corte com navalha é um serviço clássico de barbearia que exige habilidade e precisão. 
+                        É ideal para quem busca um corte mais próximo e definido.</p>
+                </li>
+                <li class="servico">
+                    <h2>Serviço Extra</h2>
+                    <h3>Aparação e Hidratação</h3>
+                    <div class="servico-imagem-container">
+                        <img class="servico-imagem" src="./img/Serviço_a_parte.jpeg" alt="Serviço Aparação e Hidratação">
+                    </div>
+                    <p>Aparar as sobrancelhas, orelhas e nariz é um serviço importante para manter a higiene e a aparência pessoal. 
+                        Além disso, a hidratação da pele e do cabelo também é essencial.</p>
+                </li>
+            </ul>
+        </section>
+
+
+        <section id="contato">
+            <h2>Contato</h2>
+            <p>Texto de contato</p>
+            <form>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem"></textarea><br><br>
+                <button>Enviar</button>
+            </form>
+        </section>
+
+
+        <footer>
+            <p>&copy; 2025 Barbearia - Todos os direitos reservados</p>
+        </footer>
+    </main>
+</body>
+
+</html>
