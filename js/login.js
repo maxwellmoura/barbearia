@@ -14,24 +14,18 @@ function login(event) {
     event.preventDefault();
     
     const email = document.getElementById("email").value;
-    const senha = document.getElementById("password").value;
+    const senha = document.getElementById("password").value; // Corrigido o ID do campo senha
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     
     const usuarioEncontrado = usuarios.find(user => user.email === email && user.senha === senha);
     
     if (usuarioEncontrado) {
         localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
-
-        // Redireciona para index.html
-        window.location.href = "index.html"; 
+        window.location.href = "Baber/Pages/index.html"; // Redireciona para a página home dentro da pasta Pages
     } else {
-        const erroMsg = document.getElementById("login-error");
-        erroMsg.textContent = "E-mail ou senha incorretos!";
-        erroMsg.style.color = "red"; 
+        document.getElementById("login-error").textContent = "E-mail ou senha incorretos!";
     }
 }
 
-// Espera o DOM carregar antes de adicionar o evento ao formulário
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("login-form").addEventListener("submit", login);
-});
+// Adicionar evento ao formulário
+document.getElementById("login-form").addEventListener("submit", login);
