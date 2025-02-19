@@ -23,7 +23,7 @@ function login(event) {
         localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
 
         // Redireciona para index.html
-        window.location.href = "Pages/index.html"; 
+        window.location.href = "index.html"; 
     } else {
         const erroMsg = document.getElementById("login-error");
         erroMsg.textContent = "E-mail ou senha incorretos!";
