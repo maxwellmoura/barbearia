@@ -2,94 +2,97 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="./agenda.css">
-    <link rel="icon" type="image/x-icon" href="../img/logo.webp">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="../js/script.js" defer></script>
-    <title>Agendamento</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/agenda.css">
+  <link rel="icon" type="image/x-icon" href="../img/logo.webp">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="../js/script.js" defer></script>
+  <script src="../js/agenda.js" defer></script>
+  <title>Agendamento</title>
 </head>
 
 <body>
-    <header class="header">
-        <img class='logo' src="../img/logo.webp" alt="Logo da Barbearia" />
-        <h1>Agendamento</h1>
-        <button id="menu" class="material-icons" onclick="clickMenu()">menu</button>
-        <menu id="menuItens">
-            <ul class="link-lista">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="./produtos.html">Produtos</a></li>
-                <li><a href="./barbeiros.html">Barbeiros</a></li>
-                <li><a href="./agenda.html">Agendar</a></li>
-                <li><a href="#">Reserva</a></li>
-            </ul>
-        </menu>
-    </header>
-    <main>
-        
-        <form id="form-agendamento">
-          <h1>Selecione os seguintes dados:</h1>
-          <div class="select-container">
-            <label for="horarios">Selecione o horário:</label>
-            <select name="horarios" id="horarios">
-              <option value="10:00">10:00</option>
-              <option value="11:00">11:00</option>
-              <option value="12:00">12:00</option>
-              <option value="13:00">13:00</option>
-              <option value="14:00">14:00</option>
-              <option value="15:00">15:00</option>
-              <option value="16:00">16:00</option>
-              <option value="17:00">17:00</option>
-              <option value="18:00">18:00</option>
-              <option value="19:00">19:00</option>
-              <option value="20:00">20:00</option>
-              <option value="21:00">21:00</option>
-              <option value="22:00">22:00</option>
-              <option value="23:00">23:00</option>
-            </select>
-          </div>
-          <div class="select-container">
-            <label for="diaDaSemana">Selecione o dia da semana:</label>
-            <select name="dia-da-semana" id="diaDaSemana">
-              <option value="Segunda-feira">Segunda-feira</option>
-              <option value="Terça-feira">Terça-feira</option>
-              <option value="Quarta-feira">Quarta-feira</option>
-              <option value="Quinta-feira">Quinta-feira</option>
-              <option value="Sexta-feira">Sexta-feira</option>
-              <option value="Sábado-feira">Sábado</option>
-              <option value="Domingo">Domingo</option>
-            </select>
-          </div>
-          <div class="select-container">
-            <label for="barbeiros">Selecione o barbeiro:</label>
-            <select name="barbeiros" id="barbeiros">
-              <option value="Barbeiro 1">João</option>
-              <option value="Barbeiro 2">Luís</option>
-              <option value="Barbeiro 3">Carlos</option>
-              <option value="Barbeiro 4">Pedro</option>
-              <option value="Barbeiro 5">Marcelo</option>
-              <option value="Barbeiro 6">Leonardo</option>
-              <option value="Barbeiro 7">Rafaela</option>
-              <option value="Barbeiro 8">Gabriela</option>
-            </select>
-          </div>
-          <div class="select-container">
-            <label for="servico">Selecione o serviço:</label>
-            <select name="servico" id="servico">
-              <option value="Corte de cabelo">Corte de cabelo</option>
-              <option value="Barba e bigode">Barba e bigode</option>
-              <option value="Navalha">Navalha</option>
-              <option value="Aparação e hidratação">Aparação e hidratação</option>
-            </select>
-          </div>
-          <button type="submit" id="botao-agendar">Agendar</button>
-        </form>
-      </main>
-    <footer>
-        <p>&copy; 2025 Barbearia - Todos os direitos reservados</p>
-    </footer>
+  <header class="header">
+    <img class='logo' src="../img/logo.webp" alt="Logo da Barbearia" />
+    <h1>Agendamento</h1>
+    <button id="menu" class="material-icons" onclick="clickMenu()">menu</button>
+    <menu id="menuItens">
+      <ul class="link-lista">
+        <a href="../index.html">Home</a>
+        <a href="./produtos.html">Produtos</a>
+        <a href="./barbeiros.html">Barbeiros</a>
+        <a href="./agenda.html">Agendar</a>
+        <a href="./carrinho.html">Carrinho</a>
+      </ul>
+    </menu>
+  </header>
+  <main>
+    <form id="form-agendamento">
+      <h1>Selecione os seguintes dados:</h1>
+      <div class="select-container">
+        <input type="text" id="name" name="name" required placeholder="Digite seu nome">
+        <label for="horarios">Selecione o horário:</label>
+        <select name="horarios" id="horarios">
+          <option value="9:00">9:00</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+          <option value="21:00">21:00</option>
+          <option value="22:00">22:00</option>
+          <option value="23:00">23:00</option>
+        </select>
+      </div>
+      <div class="select-container">
+        <label for="diaDaSemana">Selecione o dia da semana:</label>
+        <select name="dia-da-semana" id="diaDaSemana">
+          <option value="Segunda-feira">Segunda-feira</option>
+          <option value="Terça-feira">Terça-feira</option>
+          <option value="Quarta-feira">Quarta-feira</option>
+          <option value="Quinta-feira">Quinta-feira</option>
+          <option value="Sexta-feira">Sexta-feira</option>
+          <option value="Sábado">Sábado</option>
+          <option value="Domingo">Domingo</option>
+        </select>
+      </div>
+      <div class="select-container">
+        <label for="barbeiros">Selecione o barbeiro:</label>
+        <select name="barbeiros" id="barbeiros">
+          <option value="João">João</option>
+          <option value="Luís">Luís</option>
+          <option value="Carlos">Carlos</option>
+          <option value="Pedro">Pedro</option>
+          <option value="Marcelo">Marcelo</option>
+          <option value="Leonardo">Leonardo</option>
+          <option value="Rafaela">Rafaela</option>
+          <option value="Gabriela">Gabriela</option>
+        </select>
+      </div>
+      <div class="select-container">
+        <label for="servico">Selecione o serviço:</label>
+        <select name="servico" id="servico">
+          <option value="Corte de cabelo">Corte de cabelo</option>
+          <option value="Barba e bigode">Barba e bigode</option>
+          <option value="Navalha">Navalha</option>
+          <option value="Aparação e hidratação">Aparação e hidratação</option>
+        </select>
+      </div>
+      <button type="submit" id="botao-agendar">Agendar</button>
+    </form>
+  </main>
+  <footer>
+    <p>&copy; 2025 Barbearia - Todos os direitos reservados</p>
+    <p>v.1.0</p>
+  </footer>
 </body>
 
 </html>

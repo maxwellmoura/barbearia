@@ -7,7 +7,6 @@
 
 main {
     background-color: #964B00;
-    color: #ffffff;
     text-align: center;
 }
 
@@ -38,7 +37,8 @@ h1 {
 
 p {
     margin: 10px 20px 15px 30px;
-    font-size: 14px;
+    font-size: 18px;
+    color: #ffffff;
 }
 
 
@@ -194,6 +194,19 @@ button#menu:hover {
     background-color: #7a3f00;
 }
 
+#mensagem-sucesso {
+    display: none;
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#mensagem-erro {
+    display: none;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 footer {
     background-color: #301f17;
     color: #ffffff;

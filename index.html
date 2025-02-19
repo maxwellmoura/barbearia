@@ -22,7 +22,7 @@
                 <a href="./Pages/produtos.html">Produtos</a>
                 <a href="./Pages/barbeiros.html">Barbeiros</a>
                 <a href="./Pages/agenda.html">Agendar</a>
-                <a href="#">Reserva</a>
+                <a href="./Pages/carrinho.html">Carrinho</a>
             </ul>
         </menu>
     </header>
@@ -95,25 +95,24 @@
                 </li>
             </ul>
         </section>
-
-
         <section id="contato">
             <h2>Contato</h2>
             <p>Texto de contato</p>
-            <form>
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome"><br><br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email"><br><br>
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem"></textarea><br><br>
-                <button>Enviar</button>
+            <form id="form-contato">
+              <label for="nome">Nome:</label>
+              <input type="text" id="nome" name="nome"><br><br>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email"><br><br>
+              <label for="mensagem">Mensagem:</label>
+              <textarea id="mensagem" name="mensagem"></textarea><br><br>
+              <button id="enviar-form">Enviar</button>
+              <div id="mensagem-sucesso">Formulário enviado com sucesso!</div>
+              <div id="mensagem-erro"></div>
             </form>
-        </section>
-
-
+          </section>
         <footer>
             <p>&copy; 2025 Barbearia - Todos os direitos reservados</p>
+            <p>v.1.0</p>
         </footer>
     </main>
 </body>

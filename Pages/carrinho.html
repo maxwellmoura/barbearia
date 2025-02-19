@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" type="image/x-icon" href="../img/logo.webp">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="../css/carrinho.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/carrinho.js" defer></script>
+    <script src="../js/script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <img class='logo' src="../img/logo.webp" alt="Logo da Barbearia" />
+        <h1>Carrinho</h1>
+        <button id="menu" class="material-icons" onclick="clickMenu()">menu</button>
+        <menu id="menuItens">
+            <ul class="link-lista">
+                <a href="../index.html">Home</a>
+                <a href="./produtos.html">Produtos</a>
+                <a href="./barbeiros.html">Barbeiros</a>
+                <a href="./agenda.html">Agendar</a>
+                <a href="./carrinho.html">Carrinho</a>
+            </ul>
+        </menu>
+    </header>
+    <main>
+        <main>
+            <div>
+                <h2>Produtos no carrinho:</h2>
+                <div id="total"></div>
+            </div>
+            <div id="carrinho-container"></div>
+            <button id="finalizar-compra">Finalizar Compra</button>
+            <button id="limpar-carrinho">Limpar Carrinho</button>
+            
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Barbearia - Todos os direitos reservados</p>
+            <p>v.1.0</p>
+        </footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+h2{
+    color: #ccc;
+}
+.carrinho-produto {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    margin-left: 15px;
+}
+
+.carrinho-imagem {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+#finalizar-compra,
+#limpar-carrinho, button {
+    background-color: #F1A15E; 
+    color: #FFFFFF; 
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#limpar-carrinho:hover,
+#finalizar-compra:hover, button:hover {
+    background-color: #D78A3D; 
+    color: #000;
+    font-weight: bold;
+     
+}
