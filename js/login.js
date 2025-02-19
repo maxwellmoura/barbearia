@@ -21,7 +21,7 @@ function login(event) {
     
     if (usuarioEncontrado) {
         localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
-        window.location.href = "Baber/Pages/index.html"; // Redireciona para a página home dentro da pasta Pages
+        window.location.href = "/Baber/Pages/index.html"; // Redireciona para a página home dentro da pasta Pages
     } else {
         document.getElementById("login-error").textContent = "E-mail ou senha incorretos!";
     }
