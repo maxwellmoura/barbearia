@@ -27,7 +27,7 @@ function login(event) {
     } else {
         const erroMsg = document.getElementById("login-error");
         erroMsg.textContent = "E-mail ou senha incorretos!";
-        erroMsg.style.color = "red";
+        erroMsg.style.color = "red"; 
     }
 }
 
