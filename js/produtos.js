@@ -1,11 +1,13 @@
 function clickMenu() {
-    if (menuItens.style.display == 'block') {
-        menuItens.style.display = 'none'
+    const menuItens = document.getElementById("menuItens");
+    if (menuItens.style.display === "block") {
+        menuItens.style.display = "none";
     } else {
-        menuItens.style.display = 'block'
+        menuItens.style.display = "block";
     }
 }
-//Codigo pro estoque e pagamento dos produtos
+
+// Código para compra e armazenamento dos produtos no carrinho
 document.addEventListener("DOMContentLoaded", () => {
     const comprarButtons = document.querySelectorAll(".comprar");
     const quantidadeDialog = document.getElementById("quantidade-dialog");
@@ -14,33 +16,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelarButton = document.getElementById("cancelar");
     let produtoSelecionado = null;
 
+    if (comprarButtons.length === 0) {
+        console.warn("Nenhum botão de compra encontrado.");
+        return;
+    }
+
     comprarButtons.forEach(button => {
         button.addEventListener("click", () => {
             const produtoElemento = button.closest(".produtos");
-            const nomeProduto = produtoElemento.querySelector("h2").textContent;
-            const precoProduto = produtoElemento.querySelector(".preco").textContent;
-            const imagemProduto = produtoElemento.querySelector("img").src; 
+            if (!produtoElemento) {
+                console.error("Erro: Elemento do produto não encontrado.");
+                return;
+            }
+
+            const nomeProduto = produtoElemento.querySelector("h2")?.textContent || "Produto sem nome";
+            let precoProduto = produtoElemento.querySelector(".preco")?.textContent || "R$ 0,00";
+            precoProduto = parseFloat(precoProduto.replace("R$", "").replace(",", ".").trim());
+
+            const imagemProduto = produtoElemento.querySelector("img")?.src || "";
 
             produtoSelecionado = { nome: nomeProduto, preco: precoProduto, imagem: imagemProduto };
+            quantidadeInput.value = 1; // Sempre inicia com quantidade 1
             quantidadeDialog.style.display = "block";
         });
     });
 
-    adicionarAoCarrinhoButton.addEventListener("click", () => {
-        const quantidade = parseInt(quantidadeInput.value);
-        if (isNaN(quantidade) || quantidade <= 0) {
-            alert("Por favor, insira uma quantidade válida.");
-            return;
-        }
+    if (adicionarAoCarrinhoButton) {
+        adicionarAoCarrinhoButton.addEventListener("click", () => {
+            const quantidade = parseInt(quantidadeInput.value);
+            if (isNaN(quantidade) || quantidade <= 0) {
+                alert("Por favor, insira uma quantidade válida.");
+                return;
+            }
 
-        produtoSelecionado.quantidade = quantidade;
-        adicionarAoCarrinho(produtoSelecionado);
-        quantidadeDialog.style.display = "none";
-    });
+            produtoSelecionado.quantidade = quantidade;
+            adicionarAoCarrinho(produtoSelecionado);
 
-    cancelarButton.addEventListener("click", () => {
-        quantidadeDialog.style.display = "none";
-    });
+            // Fecha a caixa de diálogo após adicionar o produto
+            quantidadeDialog.style.display = "none";
+        });
+    } else {
+        console.warn("Botão 'Adicionar ao Carrinho' não encontrado.");
+    }
+
+    if (cancelarButton) {
+        cancelarButton.addEventListener("click", () => {
+            quantidadeDialog.style.display = "none";
+        });
+    } else {
+        console.warn("Botão 'Cancelar' não encontrado.");
+    }
 });
 
 function adicionarAoCarrinho(produto) {
@@ -54,20 +79,4 @@ function adicionarAoCarrinho(produto) {
     }
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    
 }
-document.addEventListener("DOMContentLoaded", () => {
-    const produtos = document.querySelectorAll(".produtos");
-    let listaProdutos = [];
-
-    produtos.forEach(produto => {
-        const nome = produto.querySelector("h2").innerText.trim();
-        let precoTexto = produto.querySelector(".preco").innerText.trim();
-        precoTexto = precoTexto.replace("R$", "").replace(",", ".").trim();
-        const preco = parseFloat(precoTexto);
-
-        listaProdutos.push({ nome, preco });
-    });
-
-    localStorage.setItem("precosProdutos", JSON.stringify(listaProdutos));
-});

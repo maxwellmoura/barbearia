@@ -23,7 +23,7 @@ function exibirCarrinho() {
 
         const precoUnitario = buscarPrecoDoProduto(produto.nome);
         const precoTotalProduto = precoUnitario * produto.quantidade;
-        total += precoTotalProduto; 
+        total += precoTotalProduto;
 
         item.innerHTML = `
             <div class="carrinho-produto">
@@ -35,10 +35,11 @@ function exibirCarrinho() {
         carrinhoContainer.appendChild(item);
     });
 
-    
     totalContainer.innerHTML = `<h3>Total: R$ ${total.toFixed(2)}</h3>`;
 
-    
+    // Armazena o total no localStorage para ser usado na finalização
+    localStorage.setItem("totalProdutos", total.toFixed(2));
+
     document.querySelectorAll(".remover-item").forEach(botao => {
         botao.addEventListener("click", (event) => {
             const index = event.target.getAttribute("data-index");
@@ -51,31 +52,20 @@ function removerDoCarrinho(index) {
     let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
     carrinho.splice(index, 1);
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    exibirCarrinho(); 
+    exibirCarrinho();
 }
 
-
 function buscarPrecoDoProduto(nomeProduto) {
-    const produtos = document.querySelectorAll(".produtos");
-    
-    for (let produto of produtos) {
-        const nome = produto.querySelector("h2").innerText.trim();
-        if (nome === nomeProduto) {
-            let precoTexto = produto.querySelector(".preco").innerText.trim();
-            precoTexto = precoTexto.replace("R$", "").replace(",", ".").trim();
-            return parseFloat(precoTexto);
-        }
-    }
-    return 0; 
+    const precos = JSON.parse(localStorage.getItem("precosProdutos")) || [];
+    const produto = precos.find(p => p.nome === nomeProduto);
+    return produto ? produto.preco : 0;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     exibirCarrinho();
 
     document.getElementById("finalizar-compra").addEventListener("click", () => {
-        alert("Vamos finalizar a compra!");
-        
-        window.location.href = "./finalizacao.html"; 
+        window.location.href = "./finalizacao.html";
     });
 
     document.getElementById("limpar-carrinho").addEventListener("click", () => {
@@ -84,9 +74,3 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Carrinho limpo com sucesso!");
     });
 });
-function buscarPrecoDoProduto(nomeProduto) {
-    const precos = JSON.parse(localStorage.getItem("precosProdutos")) || [];
-    
-    const produto = precos.find(p => p.nome === nomeProduto);
-    return produto ? produto.preco : 0;
-}

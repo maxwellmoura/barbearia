@@ -4,7 +4,7 @@ const usuarios = [
     { email: "usuario2@email.com", senha: "abcdef" }
 ];
 
-// Salvando usuários no localStorage (apenas na primeira vez)
+// Salvando usuários no localStorage (apenas se não existir)
 if (!localStorage.getItem("usuarios")) {
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
 }
@@ -13,19 +13,27 @@ if (!localStorage.getItem("usuarios")) {
 function login(event) {
     event.preventDefault();
     
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("password").value; // Corrigido o ID do campo senha
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("password").value.trim();
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const loginError = document.getElementById("login-error");
     
+    loginError.textContent = ""; // Limpa mensagens anteriores
+    
+    if (!email || !senha) {
+        loginError.textContent = "Preencha todos os campos!";
+        return;
+    }
+
     const usuarioEncontrado = usuarios.find(user => user.email === email && user.senha === senha);
     
     if (usuarioEncontrado) {
         localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
-        window.location.href = "/Baber/Pages/index.html"; // Redireciona para a página home dentro da pasta Pages
+        window.location.href = "/Baber/Pages/home.html";
     } else {
-        document.getElementById("login-error").textContent = "E-mail ou senha incorretos!";
+        loginError.textContent = "E-mail ou senha incorretos!";
     }
 }
 
-// Adicionar evento ao formulário
+// Adicionar evento ao formulário de login
 document.getElementById("login-form").addEventListener("submit", login);
