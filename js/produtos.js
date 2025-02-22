@@ -1,13 +1,21 @@
-function clickMenu() {
+document.addEventListener("DOMContentLoaded", () => {
+    configurarMenu();
+    configurarBotoesCompra();
+});
+
+function configurarMenu() {
+    const menuButton = document.getElementById("menu");
     const menuItens = document.getElementById("menuItens");
-    if (menuItens.style.display === "block") {
-        menuItens.style.display = "none";
+
+    if (menuButton && menuItens) {
+        menuButton.addEventListener("click", () => {
+            menuItens.style.display = menuItens.style.display === "block" ? "none" : "block";
+        });
     } else {
-        menuItens.style.display = "block";
+        console.error("Erro: Elementos do menu não encontrados.");
     }
 }
 
-// Código para compra e armazenamento dos produtos no carrinho
 document.addEventListener("DOMContentLoaded", () => {
     const comprarButtons = document.querySelectorAll(".comprar");
     const quantidadeDialog = document.getElementById("quantidade-dialog");
@@ -16,62 +24,41 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelarButton = document.getElementById("cancelar");
     let produtoSelecionado = null;
 
-    if (comprarButtons.length === 0) {
-        console.warn("Nenhum botão de compra encontrado.");
-        return;
-    }
-
     comprarButtons.forEach(button => {
         button.addEventListener("click", () => {
             const produtoElemento = button.closest(".produtos");
-            if (!produtoElemento) {
-                console.error("Erro: Elemento do produto não encontrado.");
-                return;
-            }
-
-            const nomeProduto = produtoElemento.querySelector("h2")?.textContent || "Produto sem nome";
-            let precoProduto = produtoElemento.querySelector(".preco")?.textContent || "R$ 0,00";
+            const nomeProduto = produtoElemento.querySelector("h2").textContent;
+            let precoProduto = produtoElemento.querySelector(".preco").textContent;
             precoProduto = parseFloat(precoProduto.replace("R$", "").replace(",", ".").trim());
-
-            const imagemProduto = produtoElemento.querySelector("img")?.src || "";
-
+            const imagemProduto = produtoElemento.querySelector("img").src;
+            
             produtoSelecionado = { nome: nomeProduto, preco: precoProduto, imagem: imagemProduto };
-            quantidadeInput.value = 1; // Sempre inicia com quantidade 1
+            quantidadeInput.value = 1;
             quantidadeDialog.style.display = "block";
         });
     });
 
-    if (adicionarAoCarrinhoButton) {
-        adicionarAoCarrinhoButton.addEventListener("click", () => {
-            const quantidade = parseInt(quantidadeInput.value);
-            if (isNaN(quantidade) || quantidade <= 0) {
-                alert("Por favor, insira uma quantidade válida.");
-                return;
-            }
+    adicionarAoCarrinhoButton.addEventListener("click", () => {
+        const quantidade = parseInt(quantidadeInput.value);
+        if (isNaN(quantidade) || quantidade <= 0) {
+            alert("Por favor, insira uma quantidade válida.");
+            return;
+        }
 
-            produtoSelecionado.quantidade = quantidade;
-            adicionarAoCarrinho(produtoSelecionado);
+        produtoSelecionado.quantidade = quantidade;
+        adicionarAoCarrinho(produtoSelecionado);
+        quantidadeDialog.style.display = "none";
+    });
 
-            // Fecha a caixa de diálogo após adicionar o produto
-            quantidadeDialog.style.display = "none";
-        });
-    } else {
-        console.warn("Botão 'Adicionar ao Carrinho' não encontrado.");
-    }
-
-    if (cancelarButton) {
-        cancelarButton.addEventListener("click", () => {
-            quantidadeDialog.style.display = "none";
-        });
-    } else {
-        console.warn("Botão 'Cancelar' não encontrado.");
-    }
+    cancelarButton.addEventListener("click", () => {
+        quantidadeDialog.style.display = "none";
+    });
 });
 
 function adicionarAoCarrinho(produto) {
     let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
     const produtoExistente = carrinho.find(item => item.nome === produto.nome);
+    
     if (produtoExistente) {
         produtoExistente.quantidade += produto.quantidade;
     } else {

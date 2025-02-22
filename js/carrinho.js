@@ -21,7 +21,7 @@ function exibirCarrinho() {
         const item = document.createElement("div");
         item.classList.add("carrinho-item");
 
-        const precoUnitario = buscarPrecoDoProduto(produto.nome);
+        const precoUnitario = produto.preco; // Agora pega direto do produto armazenado
         const precoTotalProduto = precoUnitario * produto.quantidade;
         total += precoTotalProduto;
 
@@ -55,11 +55,7 @@ function removerDoCarrinho(index) {
     exibirCarrinho();
 }
 
-function buscarPrecoDoProduto(nomeProduto) {
-    const precos = JSON.parse(localStorage.getItem("precosProdutos")) || [];
-    const produto = precos.find(p => p.nome === nomeProduto);
-    return produto ? produto.preco : 0;
-}
+// Removida a função buscarPrecoDoProduto() pois agora o preço já vem armazenado no produto
 
 document.addEventListener("DOMContentLoaded", () => {
     exibirCarrinho();

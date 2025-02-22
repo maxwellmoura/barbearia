@@ -1,7 +1,8 @@
 // Simulação de banco de dados de usuários
 const usuarios = [
     { email: "usuario1@email.com", senha: "123456" },
-    { email: "usuario2@email.com", senha: "abcdef" }
+    { email: "usuario2@email.com", senha: "abcdef" },
+    
 ];
 
 // Salvando usuários no localStorage (apenas se não existir)
